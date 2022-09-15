@@ -27,36 +27,35 @@
 
 from collections import namedtuple, defaultdict
 
-company_count = int(input('Введите количество предприятий для расчета прибыли: '))
+count = int(input('Введите количество предприятий: '))
 OrganizationData = namedtuple('OrganizationData', 'profit1 profit2 profit3 profit4 profit_sum')
 company_data = defaultdict(OrganizationData)
 company_profit = 0
-for i in range(company_count):
+for i in range(count):
     organization_name = input(f'Введите название предприятия ({i + 1}): ')
     while True:
         try:
-            organization_profit = list(map(int, input('через пробел введите прибыль данного '
-                                                 'предприятия за каждый квартал(Всего 4 квартала): ').split()))
+            organization_profit = list(map(int, input('Введите прибыль предприятия за каждый квартал: ').split()))
             if len(organization_profit) != 4:
-                print('4 значения через пробел')
+                print('Нужны 4 значения введенные через пробел')
                 raise ValueError()
             break
         except ValueError:
-            print('Вы ввели не корректное значение, попробуйте еще раз')
+            print('Некорректное значение, введите заново')
 
     company_profit += sum(organization_profit)
     organization_profit.append(sum(organization_profit))
     company_data[organization_name] = OrganizationData(*organization_profit)
 
-if company_count <= 0:
+if count <= 0:
     exit(0)
 
 print()
 
-avg_company_profit = company_profit / company_count
+avg_company_profit = company_profit / count
 print(f'Средняя годовая прибыль всех предприятий: {avg_company_profit}')
 
-company_good, company_bad= [], []
+company_good, company_bad = [], []
 
 for company, data in company_data.items():
     if data.profit_sum >= avg_company_profit:
