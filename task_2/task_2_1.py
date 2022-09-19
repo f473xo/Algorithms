@@ -17,43 +17,40 @@ from random import randint
 from timeit import timeit
 
 
-def sort_list(list):
-    i, j, size = 1, 2, len(lists)
+def sort_list(my_list):
+    i, j, size = 1, 2, len(new_list)
     i = 1
     while i < size:
-        if list[i - 1] <= list[i]:
+        if my_list[i - 1] <= my_list[i]:
             i += 1
         else:
-            tmp = list[i]
-            list[i] = list[i - 1]
-            list[i - 1] = tmp
+            tmp = my_list[i]
+            my_list[i] = my_list[i - 1]
+            my_list[i - 1] = tmp
             i -= 1
             if i == 0:
                 i = 1
-    return list
+    return my_list
 
 
 m = 10
-lists = [randint(0, 100) for i in range(2 * m + 1)]
-print(sort_list(lists))
-lst = sort_list(lists)
-print(lst[m])
-print(timeit("sort_list(lists[:])", globals=globals(), number=10000))  # 0.00165610000021843
+new_list = [randint(-100, 100) for i in range(2 * m + 1)]
+print(sort_list(new_list))
+lst = sort_list(new_list)
+print(timeit("sort_list(new_list.copy())", globals=globals(), number=1000))  # 0.001593699999830278
 
 
 m = 100
-lists = [randint(0, 200) for i in range(2 * m + 1)]
-print(sort_list(lists))
-lst = sort_list(lists)
-print(lst[m])
-print(timeit("sort_list(lists[:])", globals=globals(), number=10000))  # 0.0.016157300000031682
+new_list = [randint(-100, 100) for i in range(2 * m + 1)]
+print(sort_list(new_list))
+lst = sort_list(new_list)
+print(timeit("sort_list(new_list.copy())", globals=globals(), number=1000))  # 0.014768999999432708
 
 
 m = 1000
-lists = [randint(0, 2000) for i in range(2 * m + 1)]
-print(sort_list(lists))
-lst = sort_list(lists)
-print(lst[m])
-print(timeit("sort_list(lists[:])", globals=globals(), number=10000))  # 0.1922128999999586
+new_list = [randint(-100, 100) for i in range(2 * m + 1)]
+print(sort_list(new_list))
+lst = sort_list(new_list)
+print(timeit("sort_list(new_list.copy())", globals=globals(), number=1000))  # 0.17995410000003176
 
 # Выполнено с помощью Гномьей сортировки.

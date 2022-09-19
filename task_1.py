@@ -28,7 +28,7 @@ def sort_bubble(nums):
 
 
 print(sort_bubble(numbers))
-print(timeit("sort_bubble(numbers)", globals=globals()))  # 4.447604699999943
+print(timeit("sort_bubble(numbers.copy())", globals=globals(), number=1000))  # 0.004450200000064797
 
 
 def sort_bubble_2_0(nums):
@@ -47,10 +47,5 @@ def sort_bubble_2_0(nums):
     return nums
 
 
-print(sort_bubble_2_0(numbers))  # 4.25237960000004
-print(timeit("sort_bubble(numbers)", globals=globals()))
-
-'''
-После доработки время сортировки крупных списков существенно сократилось, т.к. расстояние между сравниваемыми числами стремится к единице.
-Короткие списки быстрее пробегаются простым пузырьковым методом.
-'''
+print(sort_bubble_2_0(numbers))  # 0.0010987999994540587
+print(timeit("sort_bubble_2_0(numbers.copy())", globals=globals(), number=1000))

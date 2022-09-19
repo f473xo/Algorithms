@@ -19,20 +19,16 @@ from numpy import median
 
 
 m = 10
-lists = [randint(0, 100) for i in range(2 * m + 1)]
-print(lists)
-print(timeit("median(lists[:])", globals=globals(), number=10000))  # 0.018076899999869056
-print(lists[m])
+my_list = [randint(-100, 100) for i in range(2 * m + 1)]
+print(my_list)
+print(timeit("median(my_list.copy())", globals=globals(), number=1000))  # 0.01675630000045203
 
 m = 100
-lists = [randint(0, 100) for i in range(2 * m + 1)]
-print(lists)
-print(timeit("median(lists[:])", globals=globals(), number=10000))  # 0.027450400000361697
-print(lists[m])
+my_list = [randint(-100, 100) for i in range(2 * m + 1)]
+print(my_list)
+print(timeit("median(my_list.copy())", globals=globals(), number=1000))  # 0.026233700000375393
 
 m = 1000
-lists = [randint(0, 100) for i in range(2 * m + 1)]
-print(lists)
-print(timeit("median(lists[:])", globals=globals(), number=10000))  # 0.1384648999996898
-print(lists[m])
-
+my_list = [randint(-100, 100) for i in range(2 * m + 1)]
+print(my_list)
+print(timeit("median(my_list.copy())", globals=globals(), number=1000))  # 0.12784089999968273
